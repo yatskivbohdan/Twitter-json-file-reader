@@ -1,7 +1,7 @@
 import json
 
 
-def json_to_dict(path, options):
+def json_info(path, options):
     '''
     (str, lst) -> None
     Reads a Twitter JSON file and rewrites in a new one only
@@ -16,9 +16,8 @@ def json_to_dict(path, options):
     -created_at
 
     '''
-    f = open(path, 'r', encoding='utf-8')
-    users = json.load(f)
-    f.close()
+    with open(path, 'r', encoding='utf-8') as infile:
+        users = json.load(infile)
     friends = {}
     for friend in users["users"]:
         friends[friend["name"]]={}
